@@ -1,5 +1,3 @@
-use criterion_plot::prelude::*;
-
 use super::*;
 use crate::kde;
 use crate::report::{ComparisonData, MeasurementData, ReportContext};

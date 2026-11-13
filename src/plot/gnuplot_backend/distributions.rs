@@ -1,5 +1,4 @@
 use crate::stats::Distribution;
-use criterion_plot::prelude::*;
 
 use super::*;
 use crate::estimate::Estimate;
@@ -67,7 +66,9 @@ fn abs_distribution(
             statistic
         )))
         .configure(Axis::BottomX, |a| {
-            a.set(Label(format!("Average time ({})", unit)))
+            a.set(Label(
+                    format!("Average {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+                    ))
                 .set(Range::Limits(kde_xs_sample.min(), kde_xs_sample.max()))
         })
         .configure(Axis::LeftY, |a| a.set(Label("Density (a.u.)")))

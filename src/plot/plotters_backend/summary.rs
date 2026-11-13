@@ -253,7 +253,9 @@ fn draw_violin_figure<XR: AsRangedCoord<Value = f64>, YR: AsRangedCoord<Value = 
         .configure_mesh()
         .disable_mesh()
         .y_desc("Input")
-        .x_desc(format!("Average time ({})", unit))
+        .x_desc(
+            format!("Average {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+            )
         .y_label_style((DEFAULT_FONT, 10))
         .y_label_formatter(&|v: &f64| data[v.round() as usize].0.to_string())
         .y_labels(data.len())

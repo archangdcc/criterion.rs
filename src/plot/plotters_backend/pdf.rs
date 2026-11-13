@@ -55,7 +55,9 @@ pub(crate) fn pdf_comparison_figure(
         .configure_mesh()
         .disable_mesh()
         .y_desc("Density (a.u.)")
-        .x_desc(format!("Average Time ({})", unit))
+        .x_desc(
+            format!("Average {} ({})", if unit == "kB" { "Size" } else { "Time" }, unit)
+            )
         .x_label_formatter(&|&x| pretty_print_float(x, true))
         .y_label_formatter(&|&y| pretty_print_float(y, true))
         .x_labels(5)
@@ -143,7 +145,9 @@ pub(crate) fn pdf_small(
         .configure_mesh()
         .disable_mesh()
         .y_desc("Density (a.u.)")
-        .x_desc(format!("Average Time ({})", unit))
+        .x_desc(
+            format!("Average {} ({})", if unit == "kB" { "Size" } else { "Time" }, unit)
+            )
         .x_label_formatter(&|&x| pretty_print_float(x, true))
         .y_label_formatter(&|&y| pretty_print_float(y, true))
         .x_labels(5)
@@ -224,7 +228,9 @@ pub(crate) fn pdf(
         .configure_mesh()
         .disable_mesh()
         .y_desc(y_label)
-        .x_desc(format!("Average Time ({})", unit))
+        .x_desc(
+            format!("Average {} ({})", if unit == "kB" { "Size" } else { "Time" }, unit)
+            )
         .x_label_formatter(&|&x| pretty_print_float(x, true))
         .y_label_formatter(&|&y| pretty_print_float(y * y_scale, true))
         .draw()

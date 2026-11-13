@@ -1,5 +1,4 @@
 use crate::stats::bivariate::regression::Slope;
-use criterion_plot::prelude::*;
 
 use super::*;
 use crate::report::{ComparisonData, MeasurementData, ReportContext};
@@ -47,7 +46,9 @@ fn regression_figure(
         })
         .configure(Axis::LeftY, |a| {
             a.configure(Grid::Major, |g| g.show())
-                .set(Label(format!("Total sample time ({})", unit)))
+                .set(Label(
+                        format!("Total sample {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+                        ))
         })
         .plot(
             Points {
@@ -187,7 +188,9 @@ fn regression_comparison_figure(
         })
         .configure(Axis::LeftY, |a| {
             a.configure(Grid::Major, |g| g.show())
-                .set(Label(format!("Total sample time ({})", unit)))
+                .set(Label(
+                        format!("Total sample {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+                        ))
         })
         .configure(Key, |k| {
             k.set(Justification::Left)

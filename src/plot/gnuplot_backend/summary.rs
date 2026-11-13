@@ -188,7 +188,9 @@ pub fn violin(
             a.configure(Grid::Major, |g| g.show())
                 .configure(Grid::Minor, |g| g.hide())
                 .set(Range::Limits(0., max * one[0]))
-                .set(Label(format!("Average time ({})", unit)))
+                .set(Label(
+                        format!("Average {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+                        ))
                 .set(axis_scale.to_gnuplot())
         })
         .configure(Axis::LeftY, |a| {

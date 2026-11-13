@@ -58,7 +58,9 @@ pub(crate) fn regression_figure(
     chart
         .configure_mesh()
         .x_desc(x_label)
-        .y_desc(format!("Total sample time ({})", unit))
+        .y_desc(
+            format!("Total sample {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+            )
         .x_label_formatter(&|x| pretty_print_float(x * x_scale, true))
         .light_line_style(TRANSPARENT)
         .draw()
@@ -184,7 +186,9 @@ pub(crate) fn regression_comparison_figure(
     chart
         .configure_mesh()
         .x_desc(x_label)
-        .y_desc(format!("Total sample time ({})", unit))
+        .y_desc(
+            format!("Total sample {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+            )
         .x_label_formatter(&|x| pretty_print_float(x * x_scale, true))
         .light_line_style(TRANSPARENT)
         .draw()

@@ -35,7 +35,9 @@ pub(crate) fn iteration_times_figure(
 
     chart
         .configure_mesh()
-        .y_desc(format!("Average Iteration Time ({})", unit))
+        .y_desc(
+            format!("Average Iteration {} ({})", if unit == "kB" { "Size" } else { "Time" }, unit)
+            )
         .x_label_formatter(&|x| pretty_print_float(*x, true))
         .light_line_style(TRANSPARENT)
         .draw()
@@ -102,7 +104,9 @@ pub(crate) fn iteration_times_comparison_figure(
 
     chart
         .configure_mesh()
-        .y_desc(format!("Average Iteration Time ({})", unit))
+        .y_desc(
+            format!("Average Iteration {} ({})", if unit == "kB" { "Size" } else { "Time" }, unit)
+            )
         .x_label_formatter(&|x| pretty_print_float(*x, true))
         .light_line_style(TRANSPARENT)
         .draw()

@@ -46,7 +46,9 @@ pub(crate) fn pdf(
         .set(size.unwrap_or(SIZE))
         .configure(Axis::BottomX, |a| {
             let xs_ = Sample::new(&xs);
-            a.set(Label(format!("Average time ({})", unit)))
+            a.set(Label(
+                    format!("Average {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+                    ))
                 .set(Range::Limits(xs_.min(), xs_.max()))
         })
         .configure(Axis::LeftY, |a| {

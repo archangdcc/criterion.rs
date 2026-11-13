@@ -1,24 +1,22 @@
 use std::mem;
 
-use cast::From as _0;
-
 use crate::traits::Data;
 
 macro_rules! impl_data {
-    ($($ty:ty),+) => {
+    ($($ty:ident),*) => {
         $(
             impl Data for $ty {
                 fn f64(self) -> f64 {
-                    f64::cast(self)
+                    <f64 as cast::From<_>>::cast(self)
                 }
             }
 
             impl<'a> Data for &'a $ty {
                 fn f64(self) -> f64 {
-                    f64::cast(*self)
+                    <f64 as cast::From<_>>::cast(*self)
                 }
             }
-        )+
+        )*
     }
 }
 

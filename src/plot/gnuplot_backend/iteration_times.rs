@@ -1,5 +1,3 @@
-use criterion_plot::prelude::*;
-
 use super::*;
 use crate::report::{ComparisonData, MeasurementData, ReportContext};
 
@@ -23,7 +21,9 @@ fn iteration_times_figure(
         })
         .configure(Axis::LeftY, |a| {
             a.configure(Grid::Major, |g| g.show())
-                .set(Label(format!("Average Iteration Time ({})", unit)))
+                .set(Label(
+                        format!("Average Iteration {} ({})", if unit == "kB" { "Size" } else { "Time" }, unit)
+                        ))
         })
         .plot(
             Points {

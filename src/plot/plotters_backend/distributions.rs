@@ -74,7 +74,9 @@ fn abs_distribution(
     chart
         .configure_mesh()
         .disable_mesh()
-        .x_desc(format!("Average time ({})", unit))
+        .x_desc(
+            format!("Average {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+            )
         .y_desc("Density (a.u.)")
         .x_label_formatter(&|&v| pretty_print_float(v, true))
         .y_label_formatter(&|&v| pretty_print_float(v, true))
