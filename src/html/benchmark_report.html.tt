@@ -247,7 +247,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Change in time</td>
+                            <td>Change in measurement</td>
                             <td class="ci-bound">{comparison.change.lower}</td>
                             <td>{comparison.change.point}</td>
                             <td class="ci-bound">{comparison.change.upper}</td>

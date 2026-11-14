@@ -102,7 +102,9 @@ fn iteration_times_comparison_figure(
         })
         .configure(Axis::LeftY, |a| {
             a.configure(Grid::Major, |g| g.show())
-                .set(Label(format!("Average Iteration Time ({})", unit)))
+                .set(Label(
+                        format!("Average Iteration {} ({})", if unit == "kB" { "Size" } else { "Time" }, unit)
+                        ))
         })
         .configure(Key, |k| {
             k.set(Justification::Left)

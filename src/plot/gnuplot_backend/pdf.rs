@@ -250,7 +250,9 @@ pub(crate) fn pdf_small(
         .set(Font(DEFAULT_FONT))
         .set(size.unwrap_or(SIZE))
         .configure(Axis::BottomX, |a| {
-            a.set(Label(format!("Average time ({})", unit)))
+            a.set(Label(
+                    format!("Average {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+                    ))
                 .set(Range::Limits(xs_.min(), xs_.max()))
         })
         .configure(Axis::LeftY, |a| {
@@ -319,7 +321,9 @@ fn pdf_comparison_figure(
         .set(Font(DEFAULT_FONT))
         .set(size.unwrap_or(SIZE))
         .configure(Axis::BottomX, |a| {
-            a.set(Label(format!("Average time ({})", unit)))
+            a.set(Label(
+                    format!("Average {} ({})", if unit == "kB" { "size" } else { "time" }, unit)
+                    ))
         })
         .configure(Axis::LeftY, |a| a.set(Label("Density (a.u.)")))
         .configure(Axis::RightY, |a| a.hide())
