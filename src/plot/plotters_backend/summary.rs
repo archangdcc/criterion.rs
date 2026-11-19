@@ -93,7 +93,7 @@ fn draw_line_comparison_figure<XR: AsRangedCoord<Value = f64>, YR: AsRangedCoord
         .configure_mesh()
         .disable_mesh()
         .x_desc(format!("Input{}", input_suffix))
-        .y_desc(format!("Average {} ({})", line_cfg.label, y_unit))
+        .y_desc(format!("Average {} ({})", if y_unit == "kB" { "size" } else { line_cfg.label }, y_unit))
         .draw()
         .unwrap();
 
